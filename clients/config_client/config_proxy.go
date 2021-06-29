@@ -83,10 +83,7 @@ func (cp *ConfigProxy) SearchConfigProxy(param vo.SearchConfigParam, tenant, acc
 		return nil, err
 	}
 	var configPage model.ConfigPage
-	err = json.Unmarshal([]byte(result), &configPage)
-	if err != nil {
-		return nil, err
-	}
+	_ = json.Unmarshal([]byte(result), &configPage)
 	return &configPage, nil
 }
 func (cp *ConfigProxy) PublishConfigProxy(param vo.ConfigParam, tenant, accessKey, secretKey string) (bool, error) {
